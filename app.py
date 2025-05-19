@@ -13,19 +13,16 @@ def webhook():
     intent= req.get('queryResult',{}).get('intent',{}).get('displayName')
 
     if intent == 'car-details':
-        return jsonify({
-            "fulfillmentText": "Car Details: Brand - Toyota, Model - Innova, Type - SUV, Fuel - Diesel"
-        })
+        car_name= req.get('queryResult').get('parameters').get('carname')
+        
+        response_text= f"{car_name} is a sedan with petrol engine, manual transmission, and comes in red, blue, or black."
     
     elif intent == 'price-details':
-        return jsonify({
-            "fulfillmentText": "Price Breakdown: On-Road - Rs.15 Lakhs, Tax - Rs.2 Lakhs, Total - Rs.17 Lakhs"
-        })
+        car_name= req.get('queryResult').get('parameters').get('carname')
+
+        response_text= f"The on-road price of {car_name} is Rs. 10 Lakhs, with Rs. 1.5 Lakhs tax, total Rs. 11.5 Lakhs."
     
     else:
-        return jsonify({
-            "fulfillmentText": "Sorry, I didn't understand that."
-        })
+        response_text="Sorry, I didn't understand that."
     
-if __name__ == '__main__':
-    app.run(debug=True)
+    return jsonify({"fulfillmentText":response_text})
