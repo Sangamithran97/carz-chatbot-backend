@@ -12,15 +12,10 @@ def webhook():
 
     intent= req.get('queryResult',{}).get('intent',{}).get('displayName')
 
-    if intent == 'car-details':
+    if intent == 'car-info':
         car_name= req.get('queryResult').get('parameters').get('carname')
         
-        response_text= f"{car_name} is a sedan with petrol engine, manual transmission, and comes in red, blue, or black."
-    
-    elif intent == 'price-details':
-        car_name= req.get('queryResult').get('parameters').get('carname')
-
-        response_text= f"The on-road price of {car_name} is Rs. 10 Lakhs, with Rs. 1.5 Lakhs tax, total Rs. 11.5 Lakhs."
+        response_text= f"{car_name} is a sedan with petrol engine, manual transmission, and comes in red, blue, or black. The on-road price of {car_name} is Rs. 10 Lakhs, with Rs. 1.5 Lakhs tax, total Rs. 11.5 Lakhs."
     
     else:
         response_text="Sorry, I didn't understand that."
