@@ -21,3 +21,6 @@ def webhook():
         response_text="Sorry, I didn't understand that."
     
     return jsonify({"fulfillmentText":response_text})
+
+if __name__ == '__main__':
+    app.run()
