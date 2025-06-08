@@ -4,10 +4,10 @@ import psycopg2
 app = Flask(__name__)
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="carzchatbot",
-    user="postgres",
-    password="postgres97",
+    host="dpg-d12hq13uibrs73f7pljg-a",
+    database="carzbot",
+    user="carzbot_user",
+    password="TK2InECumQ2o8OhOMLw6EUUqPrFb9Axf",
     port="5432"
 )
 cursor = conn.cursor()
